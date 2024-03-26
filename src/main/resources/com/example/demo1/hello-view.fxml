@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -10,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1280.0" prefWidth="720.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.HelloController">
+<VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1280.0" prefWidth="720.0" spacing="0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.HelloController">
   <padding>
     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
   </padding>
@@ -22,7 +21,7 @@
                <Font name="Arial" size="50.0" />
             </font>
          </Label>
-         <GridPane fx:id="textFieldGrid" gridLinesVisible="false" layoutX="40.0" layoutY="174.0" prefHeight="600.0" prefWidth="600.0">
+         <GridPane fx:id="textFieldGrid" layoutX="136.0" layoutY="123.0" prefHeight="450.0" prefWidth="400.0">
            <columnConstraints>
                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
