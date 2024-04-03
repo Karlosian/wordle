@@ -42,7 +42,7 @@
          </GridPane>
          <FlowPane hgap="10" layoutX="43.0" layoutY="594.0" prefHeight="70.0" prefWidth="594.0" styleClass="QwertyRow">
             <children>
-               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" prefHeight="70.0" styleClass = "KeyButton" onAction="#addLetter" text="Q">
+               <Button id="Q" maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#addLetter" prefHeight="70.0" styleClass="KeyButton" text="Q">
                   <font>
                      <Font size="23.0" />
                   </font>
@@ -50,47 +50,47 @@
                      <Insets />
                   </opaqueInsets>
                </Button>
-               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" prefHeight="70.0" styleClass = "KeyButton" onAction="#addLetter" text="W">
+               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#addLetter" prefHeight="70.0" styleClass="KeyButton" text="W" id="W">
                   <font>
                      <Font size="21.0" />
                   </font>
                </Button>
-               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" prefHeight="70.0" styleClass = "KeyButton" onAction="#addLetter" text="E">
+               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#addLetter" prefHeight="70.0" styleClass="KeyButton" text="E" id="E">
                   <font>
                      <Font size="23.0" />
                   </font>
                </Button>
-               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" prefHeight="70.0" styleClass = "KeyButton" onAction="#addLetter" text="R">
+               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#addLetter" prefHeight="70.0" styleClass="KeyButton" text="R" id="R">
                   <font>
                      <Font size="23.0" />
                   </font>
                </Button>
-               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" prefHeight="70.0" styleClass = "KeyButton" onAction="#addLetter" text="T">
+               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#addLetter" prefHeight="70.0" styleClass="KeyButton" text="T" id="T">
                   <font>
                      <Font size="23.0" />
                   </font>
                </Button>
-               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" prefHeight="70.0" styleClass = "KeyButton" onAction="#addLetter" text="Y">
+               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#addLetter" prefHeight="70.0" styleClass="KeyButton" text="Y" id="Y">
                   <font>
                      <Font size="23.0" />
                   </font>
                </Button>
-               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" prefHeight="70.0" styleClass = "KeyButton" onAction="#addLetter" text="U">
+               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#addLetter" prefHeight="70.0" styleClass="KeyButton" text="U" id="U">
                   <font>
                      <Font size="23.0" />
                   </font>
                </Button>
-               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" prefHeight="70.0" styleClass = "KeyButton" onAction="#addLetter" text="I">
+               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#addLetter" prefHeight="70.0" styleClass="KeyButton" text="I" id="I">
                   <font>
                      <Font size="23.0" />
                   </font>
                </Button>
-               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" prefHeight="70.0" styleClass = "KeyButton" onAction="#addLetter" text="O">
+               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#addLetter" prefHeight="70.0" styleClass="KeyButton" text="O" id="O">
                   <font>
                      <Font size="23.0" />
                   </font>
                </Button>
-               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" prefHeight="70.0" styleClass = "KeyButton" onAction="#addLetter" text="P">
+               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#addLetter" prefHeight="70.0" styleClass="KeyButton" text="P" id="P">
                   <font>
                      <Font size="23.0" />
                   </font>
@@ -99,7 +99,7 @@
          </FlowPane>
          <FlowPane hgap="10" layoutX="72.0" layoutY="674.0" prefHeight="70.0" prefWidth="530.0" styleClass="QwertyRow">
             <children>
-               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" prefHeight="70.0" styleClass = "KeyButton" onAction="#addLetter" text="A">
+               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#addLetter" prefHeight="70.0" styleClass="KeyButton" text="A" id="A">
                   <font>
                      <Font size="23.0" />
                   </font>
@@ -107,42 +107,42 @@
                      <Insets />
                   </opaqueInsets>
                </Button>
-               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" prefHeight="70.0" styleClass = "KeyButton" onAction="#addLetter" text="S">
+               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#addLetter" prefHeight="70.0" styleClass="KeyButton" text="S" id="S">
                   <font>
                      <Font size="21.0" />
                   </font>
                </Button>
-               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" prefHeight="70.0" styleClass = "KeyButton" onAction="#addLetter" text="D">
+               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#addLetter" prefHeight="70.0" styleClass="KeyButton" text="D" id="D">
                   <font>
                      <Font size="23.0" />
                   </font>
                </Button>
-               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" prefHeight="70.0" styleClass = "KeyButton" onAction="#addLetter" text="F">
+               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#addLetter" prefHeight="70.0" styleClass="KeyButton" text="F" id="F">
                   <font>
                      <Font size="23.0" />
                   </font>
                </Button>
-               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" prefHeight="70.0" styleClass = "KeyButton" onAction="#addLetter" text="G">
+               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#addLetter" prefHeight="70.0" styleClass="KeyButton" text="G" id="G">
                   <font>
                      <Font size="23.0" />
                   </font>
                </Button>
-               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" prefHeight="70.0" styleClass = "KeyButton" onAction="#addLetter" text="H">
+               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#addLetter" prefHeight="70.0" styleClass="KeyButton" text="H" id="H">
                   <font>
                      <Font size="23.0" />
                   </font>
                </Button>
-               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" prefHeight="70.0" styleClass = "KeyButton" onAction="#addLetter" text="J">
+               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#addLetter" prefHeight="70.0" styleClass="KeyButton" text="J" id="J">
                   <font>
                      <Font size="23.0" />
                   </font>
                </Button>
-               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" prefHeight="70.0" styleClass = "KeyButton" onAction="#addLetter" text="K">
+               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#addLetter" prefHeight="70.0" styleClass="KeyButton" text="K" id="K">
                   <font>
                      <Font size="23.0" />
                   </font>
                </Button>
-               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" prefHeight="70.0" styleClass = "KeyButton" onAction="#addLetter" text="L">
+               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#addLetter" prefHeight="70.0" styleClass="KeyButton" text="L" id="L">
                   <font>
                      <Font size="23.0" />
                   </font>
@@ -151,7 +151,7 @@
          </FlowPane>
          <FlowPane hgap="10" layoutX="43.0" layoutY="762.0" prefHeight="70.0" prefWidth="594.0" styleClass="QwertyRow">
             <children>
-               <Button maxWidth="82.0" minWidth="82.0" mnemonicParsing="false" prefHeight="70.0" styleClass = "KeyButton" onAction="#addLetter" text="ENTER">
+               <Button maxWidth="82.0" minWidth="82.0" mnemonicParsing="false" onAction="#enterKey" prefHeight="70.0" styleClass="KeyButton" text="ENTER" id="ENTER">
                   <font>
                      <Font size="15.0" />
                   </font>
@@ -159,42 +159,42 @@
                      <Insets />
                   </opaqueInsets>
                </Button>
-               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" prefHeight="70.0" styleClass = "KeyButton" onAction="#addLetter" text="Z">
+               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#addLetter" prefHeight="70.0" styleClass="KeyButton" text="Z" id="Z">
                   <font>
                      <Font size="21.0" />
                   </font>
                </Button>
-               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" prefHeight="70.0" styleClass = "KeyButton" onAction="#addLetter" text="X">
+               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#addLetter" prefHeight="70.0" styleClass="KeyButton" text="X" id="X">
                   <font>
                      <Font size="23.0" />
                   </font>
                </Button>
-               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" prefHeight="70.0" styleClass = "KeyButton" onAction="#addLetter" text="C">
+               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#addLetter" prefHeight="70.0" styleClass="KeyButton" text="C" id="C">
                   <font>
                      <Font size="23.0" />
                   </font>
                </Button>
-               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" prefHeight="70.0" styleClass = "KeyButton" onAction="#addLetter" text="V">
+               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#addLetter" prefHeight="70.0" styleClass="KeyButton" text="V" id="V">
                   <font>
                      <Font size="23.0" />
                   </font>
                </Button>
-               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" prefHeight="70.0" styleClass = "KeyButton" onAction="#addLetter" text="B">
+               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#addLetter" prefHeight="70.0" styleClass="KeyButton" text="B" id="B">
                   <font>
                      <Font size="23.0" />
                   </font>
                </Button>
-               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" prefHeight="70.0" styleClass = "KeyButton" onAction="#addLetter" text="N">
+               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#addLetter" prefHeight="70.0" styleClass="KeyButton" text="N" id="N">
                   <font>
                      <Font size="23.0" />
                   </font>
                </Button>
-               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" prefHeight="70.0" styleClass = "KeyButton" onAction="#addLetter" text="M">
+               <Button maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#addLetter" prefHeight="70.0" styleClass="KeyButton" text="M" id="M">
                   <font>
                      <Font size="23.0" />
                   </font>
                </Button>
-               <Button maxWidth="82.0" minWidth="82.0" mnemonicParsing="false" prefHeight="70.0" styleClass = "KeyButton" onAction="#addLetter" text="⌫">
+               <Button maxWidth="82.0" minWidth="82.0" mnemonicParsing="false" onAction="#backSpace" prefHeight="70.0" styleClass="KeyButton" text="⌫" id="del" >
                   <font>
                      <Font size="30.0" />
                   </font>
