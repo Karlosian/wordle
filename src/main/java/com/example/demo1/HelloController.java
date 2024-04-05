@@ -1,18 +1,18 @@
     package com.example.demo1;
 
+    import java.io.File;
     import javafx.fxml.FXML;
     import javafx.event.ActionEvent;
     import javafx.fxml.Initializable;
-    import javafx.scene.Node;
-    import javafx.scene.control.Label;
     import javafx.scene.control.TextField;
     import javafx.scene.control.Button;
     import javafx.scene.layout.GridPane;
-
+    import java.io.FileNotFoundException;
 
     import java.lang.StringBuilder;
     import java.net.URL;
     import java.util.ResourceBundle;
+    import java.util.Scanner;
 
     public class HelloController implements Initializable{
 
@@ -22,6 +22,8 @@
         private static int placeTracker = 0;
 
         private static int rowIndex = 0;
+
+        private String[] words = new String[2315];
 
         private static boolean rowFull = false;
 
@@ -48,6 +50,7 @@
                     //GridPane.setMargin(textField, new javafx.geometry.Insets(35));
                 }
             }
+            getWords();
         }
         public void addLetter(ActionEvent event) {
 
@@ -101,4 +104,34 @@
                 System.out.println("FinalString: " +  finalString);
             }
         }
+
+        private void getWords(){
+            int counter = 0;
+            try {
+                //I do not know why i have to add "target/classes" but it works and just "text.txt" does not
+                File inputStream = new File("target/classes/text.txt");
+                Scanner s = new Scanner(inputStream);
+
+                while (s.hasNextLine()) {
+                    String data = s.nextLine();
+                    words[counter] = data;
+                    counter++;
+
+                }
+                System.out.println("Successfully imported  " + counter + " words.");
+                s.close();
+            }
+            catch (FileNotFoundException e){
+                System.out.println("An error occurred.");
+                e.printStackTrace();
+            }
+        }
+
+        private void pickWord(){
+            int random =  (int) (Math.random()*2316);
+
+
+        }
+
+
     }
