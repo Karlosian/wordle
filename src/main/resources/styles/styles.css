@@ -1,4 +1,14 @@
-/*
 .KeyButton{
-    -fx-background-color: #3c7fb1;
-}*/
+    -fx-background-color: #D2D2D2;
+}
+
+.GreenButton{
+    -fx-background-color: #008208;
+}
+
+.YellowButton{
+    -fx-background-color: #FCE205;
+}
+.DarkButton{
+    -fx-background-color: #A4A4A4;
+}

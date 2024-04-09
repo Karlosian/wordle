@@ -6,11 +6,16 @@
     import javafx.fxml.Initializable;
     import javafx.scene.control.TextField;
     import javafx.scene.control.Button;
+    import javafx.scene.layout.AnchorPane;
     import javafx.scene.layout.GridPane;
+    import javafx.scene.text.Font;
+    import javafx.scene.text.FontWeight;
+
     import java.io.FileNotFoundException;
 
     import java.lang.StringBuilder;
     import java.net.URL;
+    import java.util.Arrays;
     import java.util.ResourceBundle;
     import java.util.Scanner;
 
@@ -18,6 +23,9 @@
 
         @FXML
         private GridPane textFieldGrid;
+
+        @FXML
+        private AnchorPane Anchor;
 
         private static int placeTracker = 0;
 
@@ -27,8 +35,12 @@
 
         private static boolean rowFull = false;
 
+        private String chosenWord= new String();
+
         private String finalString = " ";
 
+
+        //Initialize text fields in the grid
         public void initialize(URL url, ResourceBundle resourceBundle) {
             // Loop through each cell and add TextField
             int counter = 0;
@@ -36,6 +48,7 @@
                 for (int col = 0; col < 5; col++) {
                     counter++;
                     TextField textField = new TextField();
+                    //set appearance
                     textField.setAlignment(javafx.geometry.Pos.CENTER);
                     textField.setPrefHeight(70.0);
                     textField.setPrefWidth(70.0);
@@ -43,6 +56,7 @@
                     textField.setMinHeight(70.0);
                     textField.setEditable(false);
                     textField.setText(" ");
+                    textField.setFont(Font.font("Verdana", FontWeight.BOLD, 20));
                     textField.setId(String.valueOf(counter));
                     textField.getStyleClass().add("GridClass"); // Apply CSS class
                     textFieldGrid.add(textField, col, row);
@@ -51,6 +65,7 @@
                 }
             }
             getWords();
+            chosenWord = pickWord();
         }
         public void addLetter(ActionEvent event) {
 
@@ -102,6 +117,7 @@
                 finalString = sb.toString();
 
                 System.out.println("FinalString: " +  finalString);
+                compareWords(finalString);
             }
         }
 
@@ -127,11 +143,60 @@
             }
         }
 
-        private void pickWord(){
+        private String pickWord(){
             int random =  (int) (Math.random()*2316);
-
-
+            chosenWord = words[random];
+            System.out.println("Cheat: " + chosenWord);
+            return chosenWord.toUpperCase();
         }
 
+        private String[] compareWords(String s){
+            //create string array
+            String colors[] = new String[5];
+            //make default blank
+            Arrays.fill(colors, "Blank");
+
+            //compare each word and fill in colors
+            for(int i = 0; i<5; i++){
+                for(int j = 0; j<5; j++){
+                    if(s.charAt(i) == chosenWord.charAt(j)){
+                        if(i == j){
+                            colors[i] = "Green";
+                        }
+                        else if(!(colors[i].equals("Green"))){
+                            colors[i] = "Yellow";
+                        }
+                    }
+                }
+            }
+            //Now that colors have been determined, change the background color of text box and keyboard letters.
+            for (int i = 0; i<5; i++) {
+                if (colors[i].equals("Green")) {
+                //set letter on keyboard to green
+                    Button btt = (Button) Anchor.lookup("#" + (s.charAt(i)));
+                    btt.getStyleClass().add("GreenButton");
+                //set boxes to green
+                    TextField box = (TextField) textFieldGrid.lookup("#" + ((rowIndex-1)*5 + i + 1));
+                    box.getStyleClass().add("GreenButton");
+                }
+                else if (colors[i].equals("Yellow")) {
+                    //set letter on keyboard to green
+                    Button btt = (Button) Anchor.lookup("#" + (s.charAt(i)));
+                    btt.getStyleClass().add("YellowButton");
+                    //set boxes to green
+                    TextField box = (TextField) textFieldGrid.lookup("#" + ((rowIndex-1)*5 + i + 1));
+                    box.getStyleClass().add("YellowButton");
+                }
+                else {
+                    //set letter on keyboard to green
+                    Button btt = (Button) Anchor.lookup("#" + (s.charAt(i)));
+                    btt.getStyleClass().add("DarkButton");
+                    //set boxes to green
+                    TextField box = (TextField) textFieldGrid.lookup("#" + ((rowIndex-1)*5 + i + 1));
+                    box.getStyleClass().add("DarkButton");
+                }
+            }
+            return colors;
+        }
 
     }
