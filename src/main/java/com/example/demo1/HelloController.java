@@ -8,6 +8,7 @@
     import javafx.scene.control.Button;
     import javafx.scene.layout.AnchorPane;
     import javafx.scene.layout.GridPane;
+    import javafx.scene.layout.VBox;
     import javafx.scene.text.Font;
     import javafx.scene.text.FontWeight;
 
@@ -27,11 +28,13 @@
         @FXML
         private AnchorPane Anchor;
 
+        @FXML
+        private VBox RootBox;
         private static int placeTracker = 0;
 
         private static int rowIndex = 0;
 
-        private String[] words = new String[2315];
+        private String[] words = new String[5757];
 
         private static boolean rowFull = false;
 
@@ -98,26 +101,35 @@
             }
         }
 
+        @FXML
+        public void notifyUser() {
+            NotificationPopup.showNotification(RootBox, "Inputted word is not recognized");
+        }
+
         //logic for when enter key is pressed
         public void enterKey(ActionEvent event){
             TextField lastOfRow = (TextField) textFieldGrid.lookup("#" + ((1+rowIndex)*5));
             char c = lastOfRow.getCharacters().charAt(0);
             //make sure row is full
             if(c != ' '){
-                rowIndex++;
-                // -- add code to look at word vs wordle in the future --
-                rowFull = false;
                 //declare all 5 text fields of the row
                 TextField fir = (TextField) textFieldGrid.lookup("#" + (placeTracker - 4));
                 TextField sec = (TextField) textFieldGrid.lookup("#" + (placeTracker - 3));
                 TextField thr = (TextField) textFieldGrid.lookup("#" + (placeTracker - 2));
                 TextField frt = (TextField) textFieldGrid.lookup("#" + (placeTracker - 1));
 
+                //make string
                 StringBuilder sb = new StringBuilder().append(fir.getCharacters().charAt(0)).append(sec.getCharacters().charAt(0)).append(thr.getCharacters().charAt(0)).append(frt.getCharacters().charAt(0)).append(c);
                 finalString = sb.toString();
-
-                System.out.println("FinalString: " +  finalString);
-                compareWords(finalString);
+                if(isWord(finalString.toLowerCase())){
+                    rowFull = false;
+                     System.out.println("FinalString: " +  finalString);
+                     rowIndex++;
+                     compareWords(finalString);
+                }
+                else{
+                    notifyUser();
+                }
             }
         }
 
@@ -144,7 +156,7 @@
         }
 
         private String pickWord(){
-            int random =  (int) (Math.random()*2316);
+            int random =  (int) (Math.random()*5758);
             chosenWord = words[random];
             System.out.println("Cheat: " + chosenWord);
             return chosenWord.toUpperCase();
@@ -176,6 +188,7 @@
                     Button btt = (Button) Anchor.lookup("#" + (s.charAt(i)));
                     btt.getStyleClass().add("GreenButton");
                 //set boxes to green
+                    System.out.println(i);
                     TextField box = (TextField) textFieldGrid.lookup("#" + ((rowIndex-1)*5 + i + 1));
                     box.getStyleClass().add("GreenButton");
                 }
@@ -184,6 +197,7 @@
                     Button btt = (Button) Anchor.lookup("#" + (s.charAt(i)));
                     btt.getStyleClass().add("YellowButton");
                     //set boxes to green
+                    System.out.println(i);
                     TextField box = (TextField) textFieldGrid.lookup("#" + ((rowIndex-1)*5 + i + 1));
                     box.getStyleClass().add("YellowButton");
                 }
@@ -192,11 +206,23 @@
                     Button btt = (Button) Anchor.lookup("#" + (s.charAt(i)));
                     btt.getStyleClass().add("DarkButton");
                     //set boxes to green
+                    System.out.println(i);
                     TextField box = (TextField) textFieldGrid.lookup("#" + ((rowIndex-1)*5 + i + 1));
                     box.getStyleClass().add("DarkButton");
                 }
             }
             return colors;
         }
+
+        public boolean isWord(String word){
+            String tempWord = new String();
+            for(int i = 0; i<5757; i++ ){
+                 if (word.equals(words[i])){
+                  return true;
+                 }
+            }
+            return false;
+        }
+
 
     }

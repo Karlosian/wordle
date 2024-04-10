@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="720.0" spacing="0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.HelloController">
+<VBox fx:id="RootBox" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="720.0" spacing="0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.HelloController">
   <padding>
     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
   </padding>
@@ -44,7 +44,7 @@
             <children>
                <Button id="Q" maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#addLetter" prefHeight="70.0" styleClass="KeyButton" text="Q">
                   <font>
-                     <Font size="23.0" />
+                     <Font size="22.0" />
                   </font>
                   <opaqueInsets>
                      <Insets />
@@ -57,42 +57,42 @@
                </Button>
                <Button id="E" maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#addLetter" prefHeight="70.0" styleClass="KeyButton" text="E">
                   <font>
-                     <Font size="23.0" />
+                     <Font size="22.0" />
                   </font>
                </Button>
                <Button id="R" maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#addLetter" prefHeight="70.0" styleClass="KeyButton" text="R">
                   <font>
-                     <Font size="23.0" />
+                     <Font size="22.0" />
                   </font>
                </Button>
                <Button id="T" maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#addLetter" prefHeight="70.0" styleClass="KeyButton" text="T">
                   <font>
-                     <Font size="23.0" />
+                     <Font size="22.0" />
                   </font>
                </Button>
                <Button id="Y" maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#addLetter" prefHeight="70.0" styleClass="KeyButton" text="Y">
                   <font>
-                     <Font size="23.0" />
+                     <Font size="22.0" />
                   </font>
                </Button>
                <Button id="U" maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#addLetter" prefHeight="70.0" styleClass="KeyButton" text="U">
                   <font>
-                     <Font size="23.0" />
+                     <Font size="22.0" />
                   </font>
                </Button>
                <Button id="I" maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#addLetter" prefHeight="70.0" styleClass="KeyButton" text="I">
                   <font>
-                     <Font size="23.0" />
+                     <Font size="22.0" />
                   </font>
                </Button>
                <Button id="O" maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#addLetter" prefHeight="70.0" styleClass="KeyButton" text="O">
                   <font>
-                     <Font size="23.0" />
+                     <Font size="22.0" />
                   </font>
                </Button>
                <Button id="P" maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#addLetter" prefHeight="70.0" styleClass="KeyButton" text="P">
                   <font>
-                     <Font size="23.0" />
+                     <Font size="22.0" />
                   </font>
                </Button>
             </children>
@@ -101,7 +101,7 @@
             <children>
                <Button id="A" maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#addLetter" prefHeight="70.0" styleClass="KeyButton" text="A">
                   <font>
-                     <Font size="23.0" />
+                     <Font size="22.0" />
                   </font>
                   <opaqueInsets>
                      <Insets />
@@ -114,37 +114,37 @@
                </Button>
                <Button id="D" maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#addLetter" prefHeight="70.0" styleClass="KeyButton" text="D">
                   <font>
-                     <Font size="23.0" />
+                     <Font size="22.0" />
                   </font>
                </Button>
                <Button id="F" maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#addLetter" prefHeight="70.0" styleClass="KeyButton" text="F">
                   <font>
-                     <Font size="23.0" />
+                     <Font size="22.0" />
                   </font>
                </Button>
                <Button id="G" maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#addLetter" prefHeight="70.0" styleClass="KeyButton" text="G">
                   <font>
-                     <Font size="23.0" />
+                     <Font size="22.0" />
                   </font>
                </Button>
                <Button id="H" maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#addLetter" prefHeight="70.0" styleClass="KeyButton" text="H">
                   <font>
-                     <Font size="23.0" />
+                     <Font size="22.0" />
                   </font>
                </Button>
                <Button id="J" maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#addLetter" prefHeight="70.0" styleClass="KeyButton" text="J">
                   <font>
-                     <Font size="23.0" />
+                     <Font size="22.0" />
                   </font>
                </Button>
                <Button id="K" maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#addLetter" prefHeight="70.0" styleClass="KeyButton" text="K">
                   <font>
-                     <Font size="23.0" />
+                     <Font size="22.0" />
                   </font>
                </Button>
                <Button id="L" maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#addLetter" prefHeight="70.0" styleClass="KeyButton" text="L">
                   <font>
-                     <Font size="23.0" />
+                     <Font size="22.0" />
                   </font>
                </Button>
             </children>
@@ -166,32 +166,32 @@
                </Button>
                <Button id="X" maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#addLetter" prefHeight="70.0" styleClass="KeyButton" text="X">
                   <font>
-                     <Font size="23.0" />
+                     <Font size="22.0" />
                   </font>
                </Button>
                <Button id="C" maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#addLetter" prefHeight="70.0" styleClass="KeyButton" text="C">
                   <font>
-                     <Font size="23.0" />
+                     <Font size="22.0" />
                   </font>
                </Button>
                <Button id="V" maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#addLetter" prefHeight="70.0" styleClass="KeyButton" text="V">
                   <font>
-                     <Font size="23.0" />
+                     <Font size="22.0" />
                   </font>
                </Button>
                <Button id="B" maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#addLetter" prefHeight="70.0" styleClass="KeyButton" text="B">
                   <font>
-                     <Font size="23.0" />
+                     <Font size="22.0" />
                   </font>
                </Button>
                <Button id="N" maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#addLetter" prefHeight="70.0" styleClass="KeyButton" text="N">
                   <font>
-                     <Font size="23.0" />
+                     <Font size="22.0" />
                   </font>
                </Button>
                <Button id="M" maxWidth="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#addLetter" prefHeight="70.0" styleClass="KeyButton" text="M">
                   <font>
-                     <Font size="23.0" />
+                     <Font size="22.0" />
                   </font>
                </Button>
                <Button id="del" maxWidth="82.0" minWidth="82.0" mnemonicParsing="false" onAction="#backSpace" prefHeight="70.0" styleClass="KeyButton" text="⌫">
