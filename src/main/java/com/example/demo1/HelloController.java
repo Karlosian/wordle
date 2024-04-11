@@ -1,6 +1,9 @@
     package com.example.demo1;
 
     import java.io.File;
+
+    import javafx.animation.KeyFrame;
+    import javafx.animation.Timeline;
     import javafx.fxml.FXML;
     import javafx.event.ActionEvent;
     import javafx.fxml.Initializable;
@@ -11,9 +14,12 @@
     import javafx.scene.layout.VBox;
     import javafx.scene.text.Font;
     import javafx.scene.text.FontWeight;
+    import javafx.stage.Stage;
+    import javafx.util.Duration;
 
     import java.io.FileNotFoundException;
 
+    import java.io.IOException;
     import java.lang.StringBuilder;
     import java.net.URL;
     import java.util.Arrays;
@@ -87,6 +93,7 @@
                 TextField tf = (TextField) textFieldGrid.lookup(("#" + placeTracker));
                 tf.setText(buttonId);}
         }
+
         //logic for when backspace key is pressed
         public void backSpace(ActionEvent event){
             //check if backspace can even be pressed
@@ -103,11 +110,21 @@
 
         @FXML
         public void notifyUser() {
+            Button btt = (Button) Anchor.lookup("#ENTER");
             NotificationPopup.showNotification(RootBox, "Inputted word is not recognized");
+            btt.setDisable(true);
+            btt.getStyleClass().add("DarkButton");
+            Timeline timeline = new Timeline(
+                    new KeyFrame(Duration.seconds(3), event -> {
+                        btt.getStyleClass().remove("DarkButton");
+                        btt.setDisable(false);
+                    })
+            );
+            timeline.play();
         }
 
         //logic for when enter key is pressed
-        public void enterKey(ActionEvent event){
+        public void enterKey(ActionEvent event) throws IOException {
             TextField lastOfRow = (TextField) textFieldGrid.lookup("#" + ((1+rowIndex)*5));
             char c = lastOfRow.getCharacters().charAt(0);
             //make sure row is full
@@ -123,7 +140,6 @@
                 finalString = sb.toString();
                 if(isWord(finalString.toLowerCase())){
                     rowFull = false;
-                     System.out.println("FinalString: " +  finalString);
                      rowIndex++;
                      compareWords(finalString);
                 }
@@ -162,12 +178,12 @@
             return chosenWord.toUpperCase();
         }
 
-        private String[] compareWords(String s){
+        private String[] compareWords(String s) throws IOException {
             //create string array
             String colors[] = new String[5];
             //make default blank
             Arrays.fill(colors, "Blank");
-
+            int greenCount = 0;
             //compare each word and fill in colors
             for(int i = 0; i<5; i++){
                 for(int j = 0; j<5; j++){
@@ -188,32 +204,37 @@
                     Button btt = (Button) Anchor.lookup("#" + (s.charAt(i)));
                     btt.getStyleClass().add("GreenButton");
                 //set boxes to green
-                    System.out.println(i);
                     TextField box = (TextField) textFieldGrid.lookup("#" + ((rowIndex-1)*5 + i + 1));
                     box.getStyleClass().add("GreenButton");
+
+                    greenCount++;
                 }
                 else if (colors[i].equals("Yellow")) {
-                    //set letter on keyboard to green
+                    //set letter on keyboard to yellow
                     Button btt = (Button) Anchor.lookup("#" + (s.charAt(i)));
                     btt.getStyleClass().add("YellowButton");
-                    //set boxes to green
-                    System.out.println(i);
+                    //set boxes to yellow
                     TextField box = (TextField) textFieldGrid.lookup("#" + ((rowIndex-1)*5 + i + 1));
                     box.getStyleClass().add("YellowButton");
                 }
                 else {
-                    //set letter on keyboard to green
+                    //set letter on keyboard to dark
                     Button btt = (Button) Anchor.lookup("#" + (s.charAt(i)));
                     btt.getStyleClass().add("DarkButton");
-                    //set boxes to green
-                    System.out.println(i);
+                    //set boxes to dark
                     TextField box = (TextField) textFieldGrid.lookup("#" + ((rowIndex-1)*5 + i + 1));
                     box.getStyleClass().add("DarkButton");
                 }
             }
+            if(greenCount == 5){
+                System.out.println("You Won!");
+                ShowWin.showWin(new Stage());
+
+            }
             return colors;
         }
 
+        //check if word is recognized
         public boolean isWord(String word){
             String tempWord = new String();
             for(int i = 0; i<5757; i++ ){
