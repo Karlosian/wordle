@@ -48,6 +48,15 @@
 
         private String finalString = " ";
 
+        //keypress logic
+        public void addKeyLogic(){
+            Anchor.setOnMouseClicked(e -> Anchor.requestFocus());
+            Anchor.setOnKeyPressed(event -> {
+                String keyText = event.getText();
+                System.out.println("Pressed: " + keyText);
+            });
+        }
+
 
         //Initialize text fields in the grid
         public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -69,12 +78,13 @@
                     textField.setId(String.valueOf(counter));
                     textField.getStyleClass().add("GridClass"); // Apply CSS class
                     textFieldGrid.add(textField, col, row);
-
+                    textField.setOnMouseClicked(e -> Anchor.requestFocus());
                     //GridPane.setMargin(textField, new javafx.geometry.Insets(35));
                 }
             }
             getWords();
             chosenWord = pickWord();
+            addKeyLogic();
         }
         public void addLetter(ActionEvent event) {
 
