@@ -15,4 +15,12 @@ public class ShowWin {
         stage.setResizable(false);
         stage.show();
     }
+    public static void showLose(Stage stage) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("lose-screen.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 300,200 );
+        stage.setTitle("You Lose ):");
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
+    }
 }

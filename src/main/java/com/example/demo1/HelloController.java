@@ -9,6 +9,7 @@
     import javafx.fxml.Initializable;
     import javafx.scene.control.TextField;
     import javafx.scene.control.Button;
+    import javafx.scene.input.KeyCode;
     import javafx.scene.layout.AnchorPane;
     import javafx.scene.layout.GridPane;
     import javafx.scene.layout.VBox;
@@ -52,8 +53,20 @@
         public void addKeyLogic(){
             Anchor.setOnMouseClicked(e -> Anchor.requestFocus());
             Anchor.setOnKeyPressed(event -> {
+                KeyCode keyCode = event.getCode();
+                if (keyCode == KeyCode.BACK_SPACE) {
+                    backSpace();
+                } else if (keyCode == KeyCode.ENTER) {
+                    //have to do try and catch in case of error
+                    try {
+                        enterKey();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+                else{
                 String keyText = event.getText();
-                System.out.println("Pressed: " + keyText);
+                addLetterKey(keyText.charAt(0));}
             });
         }
 
@@ -87,27 +100,43 @@
             addKeyLogic();
         }
         public void addLetter(ActionEvent event) {
+            if (rowIndex < 6) {
+                Button clickedButton = (Button) event.getSource();
+                String buttonId = clickedButton.getId();
 
-            Button clickedButton = (Button) event.getSource();
-            String buttonId = clickedButton.getId();
+                TextField lastOfRow = (TextField) textFieldGrid.lookup("#" + ((1 + rowIndex) * 5));
+                char c = lastOfRow.getCharacters().charAt(0);
+                if (c != ' ') {
+                    rowFull = true;
+                } else rowFull = false;
 
-            TextField lastOfRow = (TextField) textFieldGrid.lookup("#" + ((1+rowIndex)*5));
-            char c = lastOfRow.getCharacters().charAt(0);
-            if(c != ' ') {
-                rowFull = true;
+                if (!rowFull) {
+                    placeTracker++;
+                    TextField tf = (TextField) textFieldGrid.lookup(("#" + placeTracker));
+                    tf.setText(buttonId);
+                }
             }
-            else rowFull = false;
+        }
+        public void addLetterKey(char s) {
+            if(Character.isLetter(s) && rowIndex<6) {
+                TextField lastOfRow = (TextField) textFieldGrid.lookup("#" + ((1 + rowIndex) * 5));
+                char c = lastOfRow.getCharacters().charAt(0);
+                if (c != ' ') {
+                    rowFull = true;
+                } else rowFull = false;
 
-            if(!rowFull){
-                placeTracker++;
-                TextField tf = (TextField) textFieldGrid.lookup(("#" + placeTracker));
-                tf.setText(buttonId);}
+                if (!rowFull) {
+                    placeTracker++;
+                    TextField tf = (TextField) textFieldGrid.lookup(("#" + placeTracker));
+                    tf.setText((Character.toString(s)).toUpperCase());
+                }
+            }
         }
 
         //logic for when backspace key is pressed
-        public void backSpace(ActionEvent event){
+        public void backSpace(){
             //check if backspace can even be pressed
-            if(placeTracker != rowIndex*5) {
+            if(placeTracker != rowIndex*5 && rowIndex<6) {
                 if (placeTracker != 0) {
                     TextField tf = (TextField) textFieldGrid.lookup(("#" + placeTracker));
                     tf.setText(" ");
@@ -134,27 +163,28 @@
         }
 
         //logic for when enter key is pressed
-        public void enterKey(ActionEvent event) throws IOException {
-            TextField lastOfRow = (TextField) textFieldGrid.lookup("#" + ((1+rowIndex)*5));
-            char c = lastOfRow.getCharacters().charAt(0);
-            //make sure row is full
-            if(c != ' '){
-                //declare all 5 text fields of the row
-                TextField fir = (TextField) textFieldGrid.lookup("#" + (placeTracker - 4));
-                TextField sec = (TextField) textFieldGrid.lookup("#" + (placeTracker - 3));
-                TextField thr = (TextField) textFieldGrid.lookup("#" + (placeTracker - 2));
-                TextField frt = (TextField) textFieldGrid.lookup("#" + (placeTracker - 1));
+        public void enterKey() throws IOException {
+            if(rowIndex<6) {
+                TextField lastOfRow = (TextField) textFieldGrid.lookup("#" + ((1 + rowIndex) * 5));
+                char c = lastOfRow.getCharacters().charAt(0);
+                //make sure row is full
+                if (c != ' ') {
+                    //declare all 5 text fields of the row
+                    TextField fir = (TextField) textFieldGrid.lookup("#" + (placeTracker - 4));
+                    TextField sec = (TextField) textFieldGrid.lookup("#" + (placeTracker - 3));
+                    TextField thr = (TextField) textFieldGrid.lookup("#" + (placeTracker - 2));
+                    TextField frt = (TextField) textFieldGrid.lookup("#" + (placeTracker - 1));
 
-                //make string
-                StringBuilder sb = new StringBuilder().append(fir.getCharacters().charAt(0)).append(sec.getCharacters().charAt(0)).append(thr.getCharacters().charAt(0)).append(frt.getCharacters().charAt(0)).append(c);
-                finalString = sb.toString();
-                if(isWord(finalString.toLowerCase())){
-                    rowFull = false;
-                     rowIndex++;
-                     compareWords(finalString);
-                }
-                else{
-                    notifyUser();
+                    //make string
+                    StringBuilder sb = new StringBuilder().append(fir.getCharacters().charAt(0)).append(sec.getCharacters().charAt(0)).append(thr.getCharacters().charAt(0)).append(frt.getCharacters().charAt(0)).append(c);
+                    finalString = sb.toString();
+                    if (isWord(finalString.toLowerCase())) {
+                        rowFull = false;
+                        rowIndex++;
+                        compareWords(finalString);
+                    } else {
+                        notifyUser();
+                    }
                 }
             }
         }
@@ -241,6 +271,10 @@
                 ShowWin.showWin(new Stage());
 
             }
+            if(rowIndex == 6 && greenCount != 5){
+                System.out.println("You failed!");
+                ShowWin.showLose(new Stage());
+            }
             return colors;
         }
 
@@ -255,5 +289,18 @@
             return false;
         }
 
+        public void playAgain(){
+            placeTracker = 0;
+            rowIndex = 0;
+            for (int i =1; i<=30; i++){
+                //remove letters
+                TextField tf = (TextField) textFieldGrid.lookup(("#" + i));
+                tf.setText(" ");
+                //remove colors
+                tf.getStyleClass().clear();
+            }
+            chosenWord = pickWord();
+
+        }
 
     }
