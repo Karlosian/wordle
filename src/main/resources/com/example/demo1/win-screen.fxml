@@ -12,7 +12,7 @@
             <Font name="Arial Black" size="19.0" />
          </font>
       </Label>
-      <Button fx:id="againButton" layoutX="75.0" layoutY="90.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#playAgain" prefHeight="80.0" prefWidth="150.0" text="Play Again">
+      <Button fx:id="againButton" layoutX="75.0" layoutY="90.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="80.0" prefWidth="150.0" text="Play Again">
          <font>
             <Font name="Arial" size="24.0" />
          </font>

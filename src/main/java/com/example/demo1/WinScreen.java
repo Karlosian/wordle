@@ -8,4 +8,8 @@ public class WinScreen {
     @FXML
     private Button againButton;
 
+    public static void playAgain(){
+        System.out.println("Play Again");
+    }
+
 }

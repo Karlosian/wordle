@@ -145,6 +145,8 @@
                     placeTracker--;
                 }
             }
+            else{playAgain();}
+
         }
 
         @FXML
