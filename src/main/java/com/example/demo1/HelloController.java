@@ -145,7 +145,7 @@
                     placeTracker--;
                 }
             }
-            else{playAgain();}
+            //else{playAgain();}
 
         }
 
