@@ -258,6 +258,31 @@
                     }
                 }
             }
+            //verify yellows
+            String tempWord = new String();
+            for(int i = 0; i<5; i++){
+                if(colors[i].equals("Green")){
+                    tempWord +='*';
+                }
+                else{
+                    tempWord += chosenWord.charAt(i);
+                }
+            }
+            //replace incorrect yellows with blank
+            String specificChar = new String();
+            System.out.println(tempWord);
+            for(int i = 0; i<5; i++){
+                specificChar = String.valueOf(s.charAt(i));
+                if(colors[i].equals("Yellow")){
+                    if(!(tempWord.contains(specificChar))){
+                        System.out.println("Blank");
+                        colors[i] = "Blank";
+                    }
+                }
+            }
+
+
+
             //Now that colors have been determined, change the background color of text box and keyboard letters.
             for (int i = 0; i<5; i++) {
                 if (colors[i].equals("Green")) {
