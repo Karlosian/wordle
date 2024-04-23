@@ -48,25 +48,37 @@
         private String chosenWord= new String();
 
         private String finalString = " ";
+        private static boolean letWarn = true;
+        private static boolean victory = false;
+
+        private static int bestScore = 999;
+
+        private static String oldWord = new String();
+
 
         //keypress logic
         public void addKeyLogic(){
             Anchor.setOnMouseClicked(e -> Anchor.requestFocus());
             Anchor.setOnKeyPressed(event -> {
                 KeyCode keyCode = event.getCode();
-                if (keyCode == KeyCode.BACK_SPACE) {
-                    backSpace();
-                } else if (keyCode == KeyCode.ENTER) {
-                    //have to do try and catch in case of error
-                    try {
-                        enterKey();
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
+                if(!victory) {
+                    if (keyCode == KeyCode.BACK_SPACE) {
+                        backSpace();
+                    } else if (keyCode == KeyCode.ENTER) {
+                        //have to do try and catch in case of error
+                        try {
+                            enterKey();
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    } else if(!event.getText().isEmpty() && Character.isLetter(event.getText().charAt(0))) {
+                        String keyText = event.getText();
+                        addLetterKey(keyText.charAt(0));
                     }
                 }
                 else{
-                String keyText = event.getText();
-                addLetterKey(keyText.charAt(0));}
+                    playAgain();
+                }
             });
         }
 
@@ -98,7 +110,9 @@
             getWords();
             chosenWord = pickWord();
             addKeyLogic();
+
         }
+        //logic for clicking button to add letter
         public void addLetter(ActionEvent event) {
             if (rowIndex < 6) {
                 Button clickedButton = (Button) event.getSource();
@@ -117,6 +131,7 @@
                 }
             }
         }
+        //add letter after key press
         public void addLetterKey(char s) {
             if(Character.isLetter(s) && rowIndex<6) {
                 TextField lastOfRow = (TextField) textFieldGrid.lookup("#" + ((1 + rowIndex) * 5));
@@ -149,19 +164,23 @@
 
         }
 
-        @FXML
+        //code for when enter is pressed on an unrecognized word
         public void notifyUser() {
-            Button btt = (Button) Anchor.lookup("#ENTER");
-            NotificationPopup.showNotification(RootBox, "Inputted word is not recognized");
-            btt.setDisable(true);
-            btt.getStyleClass().add("DarkButton");
-            Timeline timeline = new Timeline(
-                    new KeyFrame(Duration.seconds(3), event -> {
-                        btt.getStyleClass().remove("DarkButton");
-                        btt.setDisable(false);
-                    })
-            );
-            timeline.play();
+            if (letWarn) {
+                Button btt = (Button) Anchor.lookup("#ENTER");
+                NotificationPopup.showNotification(RootBox, "Inputted word is not recognized");
+                btt.setDisable(true);
+                btt.getStyleClass().add("DarkButton");
+                letWarn=false;
+                Timeline timeline = new Timeline(
+                        new KeyFrame(Duration.seconds(3), event -> {
+                            btt.getStyleClass().remove("DarkButton");
+                            btt.setDisable(false);
+                            letWarn = true;
+                        })
+                );
+                timeline.play();
+            }
         }
 
         //logic for when enter key is pressed
@@ -247,8 +266,8 @@
                     btt.getStyleClass().add("GreenButton");
                 //set boxes to green
                     TextField box = (TextField) textFieldGrid.lookup("#" + ((rowIndex-1)*5 + i + 1));
-                    box.getStyleClass().add("GreenButton");
-
+                    box.getStyleClass().add("GreenText");
+                    box.getStyleClass().remove("GridClass");
                     greenCount++;
                 }
                 else if (colors[i].equals("Yellow")) {
@@ -257,7 +276,9 @@
                     btt.getStyleClass().add("YellowButton");
                     //set boxes to yellow
                     TextField box = (TextField) textFieldGrid.lookup("#" + ((rowIndex-1)*5 + i + 1));
-                    box.getStyleClass().add("YellowButton");
+                    box.getStyleClass().add("YellowText");
+                    System.out.println();
+
                 }
                 else {
                     //set letter on keyboard to dark
@@ -265,17 +286,21 @@
                     btt.getStyleClass().add("DarkButton");
                     //set boxes to dark
                     TextField box = (TextField) textFieldGrid.lookup("#" + ((rowIndex-1)*5 + i + 1));
-                    box.getStyleClass().add("DarkButton");
+                    box.getStyleClass().add("DarkText");
                 }
             }
             if(greenCount == 5){
                 System.out.println("You Won!");
+                oldWord = chosenWord;
+                bestScore = Math.min(bestScore, rowIndex);
                 ShowWin.showWin(new Stage());
-
+                victory = true;
             }
             if(rowIndex == 6 && greenCount != 5){
                 System.out.println("You failed!");
+                oldWord = chosenWord;
                 ShowWin.showLose(new Stage());
+                victory = true;
             }
             return colors;
         }
@@ -300,9 +325,30 @@
                 tf.setText(" ");
                 //remove colors
                 tf.getStyleClass().clear();
+                tf.getStyleClass().add("GridClass");
+                tf.getStyleClass().add("text-input");
+                tf.getStyleClass().add("text-field");
+            }
+            for(char i = 'A'; i<='Z'; i++  ){
+                Button btt = (Button) Anchor.lookup("#" + (i));
+                btt.getStyleClass().clear();
+                btt.getStyleClass().add("KeyButton");
+                btt.getStyleClass().add("button");
             }
             chosenWord = pickWord();
+            victory = false;
 
+        }
+        public static int getBestScore(){
+            if(bestScore != 999){
+            int i = bestScore;
+            return i;}
+            else{
+                return 0;
+            }
+        }
+        public static String getWord(){
+            return oldWord;
         }
 
     }

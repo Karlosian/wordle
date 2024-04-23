@@ -1,8 +1,15 @@
 .KeyButton{
     -fx-background-color: #D2D2D2;
+    -fx-pref-width: 50px;
+    -fx-max-width: 50px;
+    -fx-max-height: 70px;
+    -fx-pref-height: 70px;
+    -fx-background-radius: 5px;
+    -fx-alignment: center;
 }
 
-.GreenButton{
+/* give green button priority */
+.GreenButton.button{
     -fx-background-color: #008208;
 }
 
@@ -11,4 +18,26 @@
 }
 .DarkButton{
     -fx-background-color: #A4A4A4;
+}
+.DarkText{
+    -fx-background-color: #A4A4A4;
+    -fx-border-color: #A4A4A4;
+    -fx-border-width: 2px;
+    -fx-text-fill: white;
+}
+.text-field.YellowText{
+    -fx-background-color: #FCE205;
+    -fx-border-color: #FCE205;
+    -fx-border-width: 2px;
+    -fx-text-fill: white;
+}
+.text-field.GreenText{
+    -fx-background-color: #008208;
+    -fx-border-color: #008208;
+    -fx-border-width: 2px;
+    -fx-text-fill: white;
+}
+.GridClass{
+    -fx-border-color: #A4A4A4;
+    -fx-border-width: 2px;
 }
